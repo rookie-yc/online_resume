@@ -19,6 +19,17 @@ const ComponentMap = {
 }
 
 function App() {
+
+  const [state, dispatch] = useReducer(Reducer, {
+    modules: modulesData,
+    edit: false
+  })
+
+  const { modules,  edit, editModule} = state
+
+  const asideModules = modules.filter((item) => item.position === 'aside')
+  const mainModules = modules.filter((item) => item.position === 'main')
+
   return (
     <div className="App">
       <aside>
