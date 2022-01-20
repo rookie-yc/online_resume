@@ -20,6 +20,13 @@ const ComponentMap = {
 
 function App() {
 
+  const storage = JSON.parse(window.localStorage.getItem('local_data') || []);
+  let modulesData = storage;
+  if (!storage.length) {
+    modulesData = Modules
+    window.localStorage.setItem('local_data', JSON.stringify(Modules))
+  }
+
   const [state, dispatch] = useReducer(Reducer, {
     modules: modulesData,
     edit: false
