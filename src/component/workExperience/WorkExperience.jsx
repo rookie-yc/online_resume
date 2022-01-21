@@ -1,5 +1,6 @@
 import React from 'react'
 import { Title } from '../title/Title'
+import './WorkExperience.scss'
 
 export const WorkExperience = ({data = {}}) => {
   return (

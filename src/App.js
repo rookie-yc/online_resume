@@ -34,8 +34,31 @@ function App() {
 
   const { modules,  edit, editModule} = state
 
+  useEffect(() => {
+    window.localStorage.setItem('local_data', JSON.stringify(modules))
+  },[modules])
+
   const asideModules = modules.filter((item) => item.position === 'aside')
   const mainModules = modules.filter((item) => item.position === 'main')
+
+  const renderModules = (components) => {
+    return components.map((item) => {
+      const Component = ComponentMap[item.component];
+
+      if(!Component) {
+        return null;
+      }
+
+      return(
+        <div
+          className={`${item.component}-module module`}
+          id={item.component}
+        >
+          
+        </div>
+      )
+    })
+  }
 
   return (
     <div className="App">
